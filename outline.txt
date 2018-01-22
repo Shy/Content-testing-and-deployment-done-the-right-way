@@ -1,0 +1,29 @@
+* Content modelling
+* By default we think in unstructured content
+* See Word
+* But Contentful is all about structured content
+* Relate to the database modelling
+* entity-relationship model
+* Doesn't quite work like that in Contentful
+* No one gets it right the first time
+
+* When you can’t have perfection, the next best thing is change.
+* When I joined Contentful you couldn't even delete a field. Disabling in the web app was the only thing available.
+* Can change things either through the web app or the CMA
+
+* What about staging changes before you hit production?
+* Import/export tools only work with the entire space, not fine grained
+
+* Introducing the Contentful miggration-cli
+** Repeatable, have the same migration on multiple spaces
+** Dry runs. Now what you do.
+** Audit trail. Use CI
+
+* Demo
+
+** The future
+** Integration with our main CLI
+** Content transformations
+** We want your Feedback!
+
+* Thanks

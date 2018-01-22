@@ -1,0 +1,86 @@
+{
+  "!name": "contentful-migration",
+  "!define": {
+    "Migration": {
+      "createContentType": "fn(id: string, options?: ContentTypeOptions) -> ContentType",
+      "editContentType": "fn(id: string, options?: ContentTypeOptions) -> ContentType",
+      "deleteContentType": "fn(id: string)"
+    },
+    "ContentType": {
+      "name": "fn(name: string) -> ContentType",
+      "description": "fn(description: string) -> ContentType",
+      "displayField": "fn(field: string) -> ContentType",
+      "createField": "fn(id: string, options?: FieldOptions) -> Field",
+      "editField": "fn(id: string, options?: FieldOptions) -> Field",
+      "deleteField": "fn(id: string)",
+      "moveField": "fn(id: string) -> Movement",
+      "changeFieldId": "fn(oldId: string, newId: string)"
+    },
+    "ContentTypeOptions": {
+      "name": "string",
+      "description": "string",
+      "displayField": "string"
+    },
+    "FieldOptions": {
+      "name": "string",
+      "type": "string",
+      "linkType": "string",
+      "validations": "[validation]",
+      "required": "bool",
+      "localized": "bool",
+      "disabled": "bool",
+      "omitted": "bool",
+      "deleted": "bool"
+    },
+    "ItemsOptions": {
+      "type": "string",
+      "linkType": "string",
+      "validations": "[validation]"
+    },
+    "Validation": {
+      "linkContentType": "[string]",
+      "in": "[string]",
+      "linkMimetypeGroup": "[string]",
+      "size": "MinMaxNumeric",
+      "range": "MinMaxNumeric",
+      "regexp": "RegexpValidation",
+      "unique": "bool",
+      "dateRange": "MinMaxString",
+      "assetImageDimensions": "AssetImageDimensionValidation",
+      "assetFileSize": "MinMaxNumeric"
+    },
+    "AssetImageDimensionValidation": {
+      "pattern": "string",
+      "flags": "string"
+    },
+    "RegexpValidation": {
+      "width": "MinMaxNumeric",
+      "height": "MinMaxNumeric"
+    },
+    "MinMaxNumeric": {
+      "min": "number",
+      "max": "number"
+    },
+    "MinMaxString": {
+      "min": "string",
+      "max": "string"
+    },
+    "Field": {
+      "name": "fn(name: string) -> Field",
+      "type": "fn(type: string) -> Field",
+      "linkType": "fn(linkType: string) -> Field",
+      "validations": "fn(validations: [Validation]) -> Field",
+      "required": "fn(required: bool) -> Field",
+      "localized": "fn(localized: bool) -> Field",
+      "disabled": "fn(disabled: bool) -> Field",
+      "omitted": "fn(omitted: bool) -> Field",
+      "deleted": "fn(deleted: bool) -> Field"
+    },
+    "Movement": {
+      "toTheTop": "fn()",
+      "toTheBottom": "fn()",
+      "afterField": "fn(id: string)",
+      "beforeField": "fn(id: string)"
+    }
+  }
+}

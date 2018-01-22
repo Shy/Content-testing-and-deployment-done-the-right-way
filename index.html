@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Content model changes done the right way</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/contentful.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="images/bg1.png">
+					<img src="images/contentful-white.svg">
+
+					<h3>Content model changes<br/>done the right way</h3>
+					<div style="display: flex; flex-flow: column; align-items: center;">
+						<img src="images/bug.png" style="flex-grow: 0; width: 5em; margin-bottom: 0;">
+						<p style="font-size: 0.5em;">By Rouven Weßling</p>
+					</div>
+				</section>
+				<section data-background-image="images/about-contentful.png"></section>
+				<section data-background-image="images/bg5.png">
+					<img src="images/rouven.jpg" style="border-radius: 50%; height: 5em;">
+					<h2>Rouven Weßling</h2>
+					<img src="images/bug.png">
+					<p style="font-size: 0.7em;">Developer Evangelist</p>
+					<p style="font-size: 0.5em;">lover of APIs, whisky and cake</p>
+				</section>
+
+				<section data-background-image="images/bg3.png">
+					<h2>Content modelling</h2>
+					<h3></h3>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+				<section data-background-image="images/bg4.png">
+					<h5>You can think of the content model as the "stencil" for the "drawing" that will be your content.</h5>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>We think in unstructured content</h4>
+					<img src="images/word.svg">
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Contentful is all about structured content</h4>
+					<img src="images/content-model.png">
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>How do we get from unstructured to structured?</h4>
+					<ul>
+						<li class="fragment">What content will I have?</li>
+						<li class="fragment">What are the semantics of it?</li>
+						<li class="fragment">What auxiliary information do I need?</li>
+						<li class="fragment">What structure serves both my software and my editors?</li>
+					</ul>
+				</section>
+
+				<section data-background-image="images/bg2.png">
+					<h2><i>Nobody</i> gets it right the first time</h2>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+					<aside class="notes">
+						Take lessons from database design, entity-relationship models.<br/>
+						Not 1:1 applicable because of editor experience
+					</aside>
+				</section>
+
+				<section data-background-image="images/bg6.png">
+					<h2>When you can’t have perfection, the next best thing is change.</h2>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Making changes to a space</h4>
+					<img src="images/field-management.png">
+					<aside class="notes">
+						Use the web app or the CMA.<br/>
+						When I joined Contentful you couldn't even delete a field. Disabling in the web app was the only thing available.
+					</aside>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>What could go wrong?</h4>
+					<img src="images/production-meme.jpg">
+					<aside class="notes">
+						Obviously need a staging and dev environment.
+					</aside>
+				</section>
+
+				<section data-background-image="images/bg3.png">
+					<h3>How do I make sure I do the same change in dev, staging and production?</h3>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+				<section data-background-image="images/bg2.png">
+					<h3>Contentful Migration CLI 🚚</h3>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>What you can do</h4>
+					<ul>
+						<li class="fragment">Create content type</li>
+						<li class="fragment">Delete content type</li>
+						<li class="fragment">Edit content type</li>
+						<li class="fragment">Create/edit/delete fields</li>
+						<li class="fragment">Change field ID</li>
+					</ul>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>How to</h4>
+					<pre><code data-trim style="overflow: hidden;">
+contentful-migration
+    --space-id $YOUR_SPACE_ID
+    --management-token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
+    migration-demo.js
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Description files</h4>
+					<pre><code data-trim style="overflow: hidden;">
+module.exports = function (migration) {
+  const dog = migration.createContentType('dog');
+  const name = dog.createField('name');
+  name.type('Symbol').required(true);
+};
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Advantages</h4>
+					<ul>
+						<li class="fragment">Repeatable</li>
+						<li class="fragment">Dry-runs</li>
+						<li class="fragment">Can be kept in version control</li>
+						<li class="fragment">Sanity checks</li>
+						<li class="fragment">Use CI to apply.</li>
+					</ul>
+					<aside class="notes">
+						Don't need admin permission for everyone to let them make changes!
+					</aside>
+				</section>
+
+				<section data-background-image="images/bg3.png">
+					<h2>Demo</h2>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+				<section data-background-image="images/bg6.png">
+					<h4>This is just the beginning of our migration tooling</h4>
+					<h5 class="fragment">Please give us feedback 🙏</h5>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+					<aside class="notes">
+						<ul>
+							<li>integration in the main cli</li>
+							<li>Content transformations</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section data-background-image="images/bg1.png">
+					<img src="images/contentful-white.svg">
+					<div style="height: 5em;"></div>
+					<h3 style="margin-bottom: 0; line-height: 1.1;">Rouven Weßling</h3>
+					<img src="images/bug.png" style="width: 7em; margin: 0;">
+					<p style="font-size: 0.5em; line-height: 1;">Twitter: <a href="http://www.twitter.com/RouvenWessling">@RouvenWessling</a><p>
+					<p style="font-size: 0.5em; line-height: 1;">Email: <a href="mailto:rouven@contentful.com">rouven@contentful.com</a><p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controls: false,
+        history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

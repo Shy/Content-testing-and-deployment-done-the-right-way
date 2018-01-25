@@ -33,7 +33,7 @@
 						<p style="font-size: 0.5em;">By Rouven Weßling</p>
 					</div>
 				</section>
-				<section data-background-image="images/about-contentful.png"></section>
+		<!--		<section data-background-image="images/about-contentful.png"></section> -->
 				<section data-background-image="images/bg5.png">
 					<img src="images/rouven.jpg" style="border-radius: 50%; height: 5em;">
 					<h2>Rouven Weßling</h2>
@@ -64,7 +64,7 @@
 				</section>
 
 				<section data-background-image="images/bgplain.png">
-					<h4>How do we get from unstructured to structured?</h4>
+					<h3>How do we get from unstructured to structured?</h3>
 					<ul>
 						<li class="fragment">What content will I have?</li>
 						<li class="fragment">What are the semantics of it?</li>
@@ -130,7 +130,7 @@
 					<pre><code data-trim style="overflow: hidden;">
 contentful-migration
     --space-id $YOUR_SPACE_ID
-    --management-token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
+    --access-token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     migration-demo.js
 					</code></pre>
 				</section>
@@ -166,6 +166,32 @@ module.exports = function (migration) {
 				</section>
 
 				<section data-background-image="images/bg6.png">
+					<h3>That's nice</h3>
+					<h4 class="fragment">But what if the structure of an <i>existing field</i> changes</h4>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+					<br>
+					<img class="fragment" src="images/shocked.jpg" style="height: 40vh;">
+				</section>
+
+				<section data-background-image="images/bg2.png">
+					<h3>Content transformations</h3>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Two cases</h4>
+					<ul>
+						<li class="fragment">Transform an entry in place</li>
+						<li class="fragment">Derive an entry from another</li>
+					</ul>
+				</section>
+
+				<section data-background-image="images/bg3.png">
+					<h2>Demo</h2>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+		<!--		<section data-background-image="images/bg6.png">
 					<h4>This is just the beginning of our migration tooling</h4>
 					<h5 class="fragment">Please give us feedback 🙏</h5>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
@@ -175,7 +201,7 @@ module.exports = function (migration) {
 							<li>Content transformations</li>
 						</ul>
 					</aside>
-				</section>
+				</section> -->
 
 				<section data-background-image="images/bg1.png">
 					<img src="images/contentful-white.svg">

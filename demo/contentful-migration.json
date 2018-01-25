@@ -4,7 +4,9 @@
     "Migration": {
       "createContentType": "fn(id: string, options?: ContentTypeOptions) -> ContentType",
       "editContentType": "fn(id: string, options?: ContentTypeOptions) -> ContentType",
-      "deleteContentType": "fn(id: string)"
+      "deleteContentType": "fn(id: string)",
+      "transformEntries": "fn(config: TransformEntriesConfig)",
+      "deriveLinkedEntries": "fn(config: DeriveLinkedEntriesConfig)"
     },
     "ContentType": {
       "name": "fn(name: string) -> ContentType",
@@ -81,6 +83,24 @@
       "toTheBottom": "fn()",
       "afterField": "fn(id: string)",
       "beforeField": "fn(id: string)"
-    }
+    },
+    "TransformEntriesConfig": {
+      "contentType": "string",
+      "from": "[string]",
+      "to": "[string]",
+      "transformEntryForLocale": "fn(fields: Object, locale: string) -> Object",
+      "shouldPublish": "bool"
+    },
+    "DeriveLinkedEntriesConfig": {
+      "contentType": "string",
+      "derivedContentType": "string",
+      "from": "[string]",
+      "toReferenceField": "string",
+      "derivedFields": "string",
+      "identityKey": "fn(fields: Object) -> string",
+      "deriveEntryForLocale": "fn(fields: Object, locale: string) -> Object",
+      "shouldPublish": "bool"
+    },
+    "Object": {}
   }
 }

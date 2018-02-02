@@ -4,14 +4,10 @@ module.exports = function (migration) {
     from: ['name'],
     to: ['firstName', 'lastName'],
     shouldPublish: true,
-    transformEntryForLocale: function (fields, locale) {
-      const {name} = fields;
-      const parts = name[locale].split(' ');
+    transformEntryForLocale: function ({name}, locale) {
+      const [firstName, lastName] = name[locale].split(' ');
 
-      return {
-        firstName: parts[0],
-        lastName: parts[1]
-      }
+      return { firstName, lastName }
     }
   });
 }

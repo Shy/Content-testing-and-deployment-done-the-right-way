@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Content model changes done the right way</title>
+		<title>Content testing and deployment done the right way</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/contentful.css">
@@ -27,59 +27,42 @@
 				<section data-background-image="images/bg1.png">
 					<img src="images/contentful-white.svg">
 
-					<h3>Content model changes<br/>done the right way</h3>
+					<h3>Content testing and deployment <br/>done the right way</h3>
 					<div style="display: flex; flex-flow: column; align-items: center;">
 						<img src="images/bug.png" style="flex-grow: 0; width: 5em; margin-bottom: 0;">
-						<p style="font-size: 0.5em;">By Rouven Weßling</p>
+						<p style="font-size: 0.5em;">By Shy Ruparel</p>
+					</div>
+				</section>
+
+				<section data-background-image="images/bg1.png">
+					<img src="images/contentful-white.svg">
+
+					<h3>Content model changes<br/>done the right way<br> part 2.</h3>
+					<div style="display: flex; flex-flow: column; align-items: center;">
+						<img src="images/bug.png" style="flex-grow: 0; width: 5em; margin-bottom: 0;">
+						<p style="font-size: 0.5em;">By Shy Ruparel</p>
 					</div>
 				</section>
 		<!--		<section data-background-image="images/about-contentful.png"></section> -->
-				<section data-background-image="images/bg5.png">
-					<img src="images/rouven.jpg" style="border-radius: 50%; height: 5em;">
-					<h2>Rouven Weßling</h2>
-					<img src="images/bug.png">
-					<p style="font-size: 0.7em;">Developer Evangelist</p>
-					<p style="font-size: 0.5em;">lover of APIs, whisky and cake</p>
+
+				<section data-background-image="images/bg1.png">
+					<img src="images/contentful-white.svg"><br>
+					<img src="images/shy.jpg" style="border-radius: 50%; height: 5em;">
+					<h3 style="margin-bottom: 0; line-height: 1.1;">Shy Ruparel</h3>
+					<img src="images/bug.png" style="width: 7em; margin: 0;">
+					<p style="font-size: 0.5em; line-height: 1;">Developer Evangelist<p>
+					<p style="font-size: 0.5em; line-height: 1;">Twitter: <a href="http://www.twitter.com/shyruparel">@ShyRuparel</a><p>
 				</section>
 
 				<section data-background-image="images/bg3.png">
-					<h2>Content modelling</h2>
+					<h2>Building Software</h2>
 					<h3></h3>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
-				</section>
-
-				<section data-background-image="images/bg4.png">
-					<h5>You can think of the content model as the "stencil" for the "drawing" that will be your content.</h5>
-					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
-				</section>
-
-				<section data-background-image="images/bgplain.png">
-					<h4>We think in unstructured content</h4>
-					<img src="images/word.svg">
-				</section>
-
-				<section data-background-image="images/bgplain.png">
-					<h4>Contentful is all about structured content</h4>
-					<img src="images/content-model.png">
-				</section>
-
-				<section data-background-image="images/bgplain.png">
-					<h3>How do we get from unstructured to structured?</h3>
-					<ul>
-						<li class="fragment">What content will I have?</li>
-						<li class="fragment">What are the semantics of it?</li>
-						<li class="fragment">What auxiliary information do I need?</li>
-						<li class="fragment">What structure serves both my software and my editors?</li>
-					</ul>
 				</section>
 
 				<section data-background-image="images/bg2.png">
 					<h2><i>Nobody</i> gets it right the first time</h2>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
-					<aside class="notes">
-						Take lessons from database design, entity-relationship models.<br/>
-						Not 1:1 applicable because of editor experience
-					</aside>
 				</section>
 
 				<section data-background-image="images/bg6.png">
@@ -88,33 +71,17 @@
 				</section>
 
 				<section data-background-image="images/bgplain.png">
-					<h4>Making changes to a space</h4>
-					<img src="images/field-management.png">
-					<aside class="notes">
-						Use the web app or the CMA.<br/>
-						When I joined Contentful you couldn't even delete a field. Disabling in the web app was the only thing available.
-					</aside>
-				</section>
-
-				<section data-background-image="images/bgplain.png">
 					<h4>What could go wrong?</h4>
 					<img src="images/production-meme.jpg">
-					<aside class="notes">
-						Obviously need a staging and dev environment.
-					</aside>
-				</section>
-
-				<section data-background-image="images/bg3.png">
-					<h3>How do I make sure I do the same change in dev, staging and production?</h3>
-					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
 				</section>
 
 				<section data-background-image="images/bg2.png">
-					<h3>Contentful Migration CLI 🚚</h3>
+					<h3>In a past meetup we talked about the <br>Contentful Migration CLI 🚚</h3>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
 				</section>
 
 				<section data-background-image="images/bgplain.png">
+					<h4>TL;DR</h4>
 					<h4>What you can do</h4>
 					<ul>
 						<li class="fragment">Create content type</li>
@@ -126,23 +93,12 @@
 				</section>
 
 				<section data-background-image="images/bgplain.png">
-					<h4>How to</h4>
+					<h4>All in Javascript</h4>
 					<pre><code data-trim style="overflow: hidden;">
 contentful-migration
     --space-id $YOUR_SPACE_ID
     --access-token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     migration-demo.js
-					</code></pre>
-				</section>
-
-				<section data-background-image="images/bgplain.png">
-					<h4>Description files</h4>
-					<pre><code data-trim style="overflow: hidden;">
-module.exports = function (migration) {
-  const dog = migration.createContentType('dog');
-  const name = dog.createField('name');
-  name.type('Symbol').required(true);
-};
 					</code></pre>
 				</section>
 
@@ -160,61 +116,207 @@ module.exports = function (migration) {
 					</aside>
 				</section>
 
-				<section data-background-image="images/bg3.png">
-					<h2>Demo</h2>
-					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
-				</section>
-
 				<section data-background-image="images/bg6.png">
 					<h3>That's nice</h3>
-					<h4 class="fragment">But what if the structure of an <i>existing field</i> changes</h4>
+					<h4 class="fragment">But what if I want to discard, test or preview a migration?</h4>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
 					<br>
 					<img class="fragment" src="images/shocked.jpg" style="height: 40vh;">
 				</section>
 
 				<section data-background-image="images/bg2.png">
-					<h3>Content transformations</h3>
+					<h3>Space Environments 🚀</h3>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
 				</section>
 
+
 				<section data-background-image="images/bgplain.png">
-					<h4>Two cases</h4>
+					<h4>Space environments allow you to create multiple versions of the space, and change them in isolation.</h4>
+					<img src="images/environments-page.png">
+				</section>
+
+
+				<section data-background-image="images/bgplain.png">
+					<h3>Common uses for space environments</h3>
 					<ul>
-						<li class="fragment">Transform an entry in place</li>
-						<li class="fragment">Derive an entry from another</li>
+						<li class="fragment">Local development</li>
+						<li class="fragment">Staging / QA</li>
+						<li class="fragment">Continuous integration</li>
 					</ul>
 				</section>
 
 				<section data-background-image="images/bg3.png">
-					<h2>Demo Pt. 2</h2>
+					<h3>Let's talk about</h3>
+					<h2>Continuous Integration</h2>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
 				</section>
 
-		<!--		<section data-background-image="images/bg6.png">
-					<h4>This is just the beginning of our migration tooling</h4>
-					<h5 class="fragment">Please give us feedback 🙏</h5>
-					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
-					<aside class="notes">
+				<section data-background-image="images/bgplain.png">
+					<h3>A simple Continuous Integration pipeline:</h3>
+					<ul>
+						<li class="fragment">Build</li>
+						<li class="fragment">Test</li>
+						<li class="fragment">Deploy</li>
+					</ul>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h3>Integrating Migrations into CI Pipeline:</h3>
+					<ul>
+						<li class="fragment">Build</li>
 						<ul>
-							<li>integration in the main cli</li>
-							<li>Content transformations</li>
+							<li class="fragment"><i>Spin up a copy of the master space</li>
+							<li class="fragment">Migrate copy</li></i>
 						</ul>
-					</aside>
-				</section> -->
+						<li class="fragment">Test</li>
+						<li class="fragment">Deploy</li>
+						<ul>
+							<i><li class="fragment">Migrate master space</li></i>
+						</ul>
+					</ul>
+				</section>
+
+
+				<section data-background-image="images/bgplain.png">
+					<img src="images/circle-logo.png">
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>CircleCI config.yml - Ready Migrations</h4>
+					<pre><code data-trim data-noescape>
+- run:
+      name: Preparing environment for testing
+      command: |
+        . venv/bin/activate
+        python migration_prep.py "circletesting_$CIRCLE_BRANCH"
+        node_modules/contentful-migration/bin/contentful-migration
+        	--access-token $MANGEMENT_API_KEY --space-id $SPACE_ID
+        	--environment-id "circletesting_$CIRCLE_BRANCH"
+			--yes
+        	migration-tests/migration_helper.js
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>migration_prep.py</h4>
+					<pre><code data-trim data-noescape>
+import contentful_management
+import os, sys
+from dotenv import load_dotenv
+
+SPACE_ID = os.getenv("SPACE_ID")
+MANGEMENT_API_KEY = os.getenv("MANGEMENT_API_KEY")
+TESTING_ENV = sys.argv[1]
+
+client = contentful_management.Client(MANGEMENT_API_KEY)
+environment = client.environments(SPACE_ID)
+			.create(TESTING_ENV, {"name": TESTING_ENV})
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>migration_helper.js</h4>
+					<pre><code data-trim data-noescape>
+module.exports = function(migration) {
+	var parsedJSON = require("./version.json");
+    const expectedVersion = parsedJSON.expectedVersion;
+    const upgradeVersion = parsedJSON.upgradeVersion;
+
+    migrationString =
+            "./content_migration_" +
+            upgradeVersion.split(".").join("_") +
+            ".js";
+        var migrationCode = require(migrationString);
+
+        if (migrationCode.validateVersion(expectedVersion, upgradeVersion)) {
+            migrationCode.runMigration(migration);
+        } else {
+            console.log("Migration Version Mismatch");
+            process.exit(1);
+        }
+
+}
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Migration Files</h4>
+					<img src="images/migration-list.png">
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>content_migration_0_0_7.js pt 1</h4>
+					<pre><code data-trim data-noescape>
+const migration_expected_version = "0.0.6";
+const migration_upgrade_version = "0.0.7";
+
+function validateVersion(expected_version, upgrade_version) {
+    if (upgrade_version == migration_upgrade_version) {
+        if (expected_version == migration_expected_version) {
+            return true;
+        }
+    }
+    return false;
+}
+
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>content_migration_0_0_7.js pt 2</h4>
+					<pre><code data-trim data-noescape>
+function runMigration(migration) {
+    const post = migration.editContentType("post");
+    post
+        .createField("author")
+        .name("author")
+        .type("Symbol")
+        .required(false);
+    return;
+}
+
+module.exports = {
+    runMigration,
+    validateVersion
+};
+
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>CircleCI config.yml - Run Tests</h4>
+					<pre><code data-trim data-noescape>
+- run:
+      name: run tests
+      command: |
+        . venv/bin/activate
+        pytest --environment-id="circletesting_$CIRCLE_BRANCH"
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bg3.png">
+					<h2>Demo</h2>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
 
 				<section data-background-image="images/bg2.png">
-					<h3>Be ready to evolve your content model</h3>
+					<h3>Integrate evolving your content model into your delivery pipeline</h3>
+					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				</section>
+
+				<section data-background-image="images/bg2.png">
+					<h3>Check out the example app:</h3>
+					<h5>github.com/contentful-labs/continous-delivery-environments-example</h5>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
 				</section>
 
 				<section data-background-image="images/bg1.png">
-					<img src="images/contentful-white.svg">
-					<div style="height: 5em;"></div>
-					<h3 style="margin-bottom: 0; line-height: 1.1;">Rouven Weßling</h3>
+					<img src="images/contentful-white.svg"><br>
+					<img src="images/shy.jpg" style="border-radius: 50%; height: 5em;">
+					<h3 style="margin-bottom: 0; line-height: 1.1;">Shy Ruparel</h3>
 					<img src="images/bug.png" style="width: 7em; margin: 0;">
-					<p style="font-size: 0.5em; line-height: 1;">Twitter: <a href="http://www.twitter.com/RouvenWessling">@RouvenWessling</a><p>
-					<p style="font-size: 0.5em; line-height: 1;">Email: <a href="mailto:rouven@contentful.com">rouven@contentful.com</a><p>
+					<p style="font-size: 0.5em; line-height: 1;">Twitter: <a href="http://www.twitter.com/shyruparel">@ShyRuparel</a><p>
+					<p style="font-size: 0.5em; line-height: 1;">Email: <a href="mailto:shy@contentful.com">shy@contentful.com</a><p>
 				</section>
 			</div>
 		</div>

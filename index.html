@@ -240,7 +240,6 @@ environment = client.environments(SPACE_ID)
 					<pre><code data-trim data-noescape>
 module.exports = function(migration) {
 	var parsedJSON = require("./version.json");
-    const expectedVersion = parsedJSON.expectedVersion;
     const upgradeVersion = parsedJSON.upgradeVersion;
 
     migrationString =
@@ -249,13 +248,7 @@ module.exports = function(migration) {
             ".js";
         var migrationCode = require(migrationString);
 
-        if (migrationCode.validateVersion(expectedVersion, upgradeVersion)) {
-            migrationCode.runMigration(migration);
-        } else {
-            console.log("Migration Version Mismatch");
-            process.exit(1);
-        }
-
+        migrationCode.runMigration(migration);
 }
 					</code></pre>
 				</section>
@@ -265,26 +258,9 @@ module.exports = function(migration) {
 					<img src="images/migration-list.png">
 				</section>
 
-				<section data-background-image="images/bgplain.png">
-					<h4>content_migration_0_0_7.js pt 1</h4>
-					<pre><code data-trim data-noescape>
-const migration_expected_version = "0.0.6";
-const migration_upgrade_version = "0.0.7";
-
-function validateVersion(expected_version, upgrade_version) {
-    if (upgrade_version == migration_upgrade_version) {
-        if (expected_version == migration_expected_version) {
-            return true;
-        }
-    }
-    return false;
-}
-
-					</code></pre>
-				</section>
 
 				<section data-background-image="images/bgplain.png">
-					<h4>content_migration_0_0_7.js pt 2</h4>
+					<h4>content_migration_0_0_7.js</h4>
 					<pre><code data-trim data-noescape>
 function runMigration(migration) {
     const post = migration.editContentType("post");

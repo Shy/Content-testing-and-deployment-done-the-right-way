@@ -35,17 +35,6 @@
 				</section>
 
 				<section data-background-image="images/bg1.png">
-					<img src="images/contentful-white.svg">
-
-					<h3>Content model changes<br/>done the right way<br> part 2.</h3>
-					<div style="display: flex; flex-flow: column; align-items: center;">
-						<img src="images/bug.png" style="flex-grow: 0; width: 5em; margin-bottom: 0;">
-						<p style="font-size: 0.5em;">By Shy Ruparel</p>
-					</div>
-				</section>
-		<!--		<section data-background-image="images/about-contentful.png"></section> -->
-
-				<section data-background-image="images/bg1.png">
 					<img src="images/contentful-white.svg"><br>
 					<img src="images/shy.jpg" style="border-radius: 50%; height: 5em;">
 					<h3 style="margin-bottom: 0; line-height: 1.1;">Shy Ruparel</h3>
@@ -77,7 +66,7 @@
 				</section>
 
 				<section data-background-image="images/bg2.png">
-					<h3>In a past meetup we talked about the <br>Contentful Migration CLI 🚚</h3>
+					<h3>Let's talk about the <br>Contentful Migration CLI 🚚</h3>
 					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
 				</section>
 
@@ -85,18 +74,29 @@
 					<h4>TL;DR</h4>
 					<h4>What you can do</h4>
 					<ul>
-						<li class="fragment">Create content type</li>
-						<li class="fragment">Delete content type</li>
-						<li class="fragment">Edit content type</li>
-						<li class="fragment">Create/edit/delete fields</li>
-						<li class="fragment">Change field ID</li>
+						<li class="fragment">⚒ Create content type</li>
+						<li class="fragment">❌ Delete content type</li>
+						<li class="fragment">⌨ Edit content type</li >
+						<li class="fragment">⚒ Create/edit/delete fields</li>
+						<li class="fragment">🏑 Change field ID</li>
 					</ul>
 				</section>
 
 				<section data-background-image="images/bgplain.png">
 					<h4>All in Javascript</h4>
 					<pre><code data-trim style="overflow: hidden;">
-contentful-migration
+module.exports = function runMigration(migration) {
+  const post = migration.editContentType("post");
+  post.deleteField("last_appearance");
+  return;
+};
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Callable via the Contentful CLI</h4>
+					<pre><code data-trim style="overflow: hidden;">
+contentful space migration
     --space-id $YOUR_SPACE_ID
     --access-token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     migration-demo.js
@@ -104,10 +104,13 @@ contentful-migration
 				</section>
 
 				<section data-background-image="images/bgplain.png">
+					<h3>Programmatic Content model changes</h3>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
 					<h4>Advantages</h4>
 					<ul>
 						<li class="fragment">Repeatable</li>
-						<li class="fragment">Dry-runs</li>
 						<li class="fragment">Can be kept in version control</li>
 						<li class="fragment">Sanity checks</li>
 						<li class="fragment">Use CI to apply.</li>
@@ -116,6 +119,15 @@ contentful-migration
 						Don't need admin permission for everyone to let them make changes!
 					</aside>
 				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Demo</h4>
+					<video data-autoplay>
+						<source data-src="images/migration_demo.webm" type="video/webm" />
+						<source data-src="images/migration_demo.mp4" type="video/mp4" />
+    				 </video>
+				</section>
+
 
 				<section data-background-image="images/bg6.png">
 					<h3>That's nice</h3>
@@ -136,6 +148,45 @@ contentful-migration
 					<img src="images/environments-page.png">
 				</section>
 
+				<section data-background-image="images/bgplain.png">
+					<h5>Initialize the client</h5>
+					<pre><code data-trim style="overflow: hidden;">
+const contentful = require('contentful');
+
+const client = contentful.createClient({
+  space: 'space_id',
+  accessToken: 'content_delivery_api_key'
+});
+
+client.getEntries();
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h5>Initialize the client with environments</h5>
+					<pre><code data-trim style="overflow: hidden;">
+const contentful = require('contentful');
+
+const client = contentful.createClient({
+  space: 'space_id',
+  environment: 'environment_id',
+  accessToken: 'content_delivery_api_key'
+});
+
+client.getEntries();
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Combine migrations with environment</h4>
+					<pre><code data-trim style="overflow: hidden;">
+contentful space migration
+    --space-id $YOUR_SPACE_ID
+    --environment-id $YOUR_ENV_ID
+    --access-token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
+    migration-demo.js
+					</code></pre>
+				</section>
 
 				<section data-background-image="images/bgplain.png">
 					<h3>Common uses for space environments</h3>
@@ -166,16 +217,17 @@ contentful-migration
 					<ul>
 						<li class="fragment">Build</li>
 						<ul>
-							<li class="fragment"><i>Spin up a copy of the master space</li>
-							<li class="fragment">Migrate copy</li></i>
+							<li class="fragment"><i>Create a new environment</li>
+							<li class="fragment">Migrate new environment</li></i>
 						</ul>
 						<li class="fragment">Test</li>
 						<li class="fragment">Deploy</li>
 						<ul>
-							<i><li class="fragment">Migrate master space</li></i>
+							<i><li class="fragment">Migrate master environment</li></i>
 						</ul>
 					</ul>
 				</section>
+
 
 
 				<section data-background-image="images/bgplain.png">
@@ -193,36 +245,8 @@ contentful-migration
 				</section>
 
 				<section data-background-image="images/bgplain.png">
-					<h4>CircleCI config.yml - Ready Migrations</h4>
-					<pre><code data-trim data-noescape>
-- run:
-      name: Preparing environment for testing
-      command: |
-        . venv/bin/activate
-        python migration_prep.py "circletesting_$CIRCLE_BRANCH"
-        node_modules/contentful-migration/bin/contentful-migration
-        	--access-token $MANGEMENT_API_KEY --space-id $SPACE_ID
-        	--environment-id "circletesting_$CIRCLE_BRANCH"
-			--yes
-        	migration-tests/migration_helper.js
-					</code></pre>
-				</section>
-
-				<section data-background-image="images/bgplain.png">
-					<h4>migration_prep.py</h4>
-					<pre><code data-trim data-noescape>
-import contentful_management
-import os, sys
-from dotenv import load_dotenv
-
-SPACE_ID = os.getenv("SPACE_ID")
-MANGEMENT_API_KEY = os.getenv("MANGEMENT_API_KEY")
-TESTING_ENV = sys.argv[1]
-
-client = contentful_management.Client(MANGEMENT_API_KEY)
-environment = client.environments(SPACE_ID)
-			.create(TESTING_ENV, {"name": TESTING_ENV})
-					</code></pre>
+					<h4>Keeping code and content model in sync</h4>
+					<img src="images/trains.gif">
 				</section>
 
 				<section data-background-image="images/bgplain.png">
@@ -236,69 +260,137 @@ environment = client.environments(SPACE_ID)
 				</section>
 
 				<section data-background-image="images/bgplain.png">
-					<h4>migration_helper.js</h4>
-					<pre><code data-trim data-noescape>
-module.exports = function(migration) {
-	var parsedJSON = require("./version.json");
-    const upgradeVersion = parsedJSON.upgradeVersion;
-
-    migrationString =
-            "./content_migration_" +
-            upgradeVersion.split(".").join("_") +
-            ".js";
-        var migrationCode = require(migrationString);
-
-        migrationCode.runMigration(migration);
-}
-					</code></pre>
-				</section>
-
-				<section data-background-image="images/bgplain.png">
 					<h4>Migration Files</h4>
 					<img src="images/migration-list.png">
 				</section>
 
-				<section data-background-image="images/bgplain.png">
-					<h4>Keeping code and content model in sync</h4>
-					<img src="images/trains.gif">
-				</section>
 
 				<section data-background-image="images/bgplain.png">
-					<h4>content_migration_0_0_7.js</h4>
-					<pre><code data-trim data-noescape>
-function runMigration(migration) {
-    const post = migration.editContentType("post");
-    post
-        .createField("author")
-        .name("author")
-        .type("Symbol")
-        .required(false);
-    return;
-}
-
-module.exports = {
-    runMigration,
-    validateVersion
-};
-
-					</code></pre>
-				</section>
-
-				<section data-background-image="images/bgplain.png">
-					<h4>CircleCI config.yml - Run Tests</h4>
+					<h4>CircleCI config.yml - Configure Contentful</h4>
 					<pre><code data-trim data-noescape>
 - run:
-      name: run tests
-      command: |
-        . venv/bin/activate
-        pytest --environment-id="circletesting_$CIRCLE_BRANCH"
+  name: Preparing environment for testing
+  command: |
+    . venv/bin/activate
+    scripts/migrate.js $SPACE_ID
+    "CI_$CIRCLE_BRANCH" $MANAGEMENT_API_KEY
 					</code></pre>
 				</section>
 
-				<section data-background-image="images/bg3.png">
-					<h2>Demo</h2>
-					<img src="images/bug.png" style="width: 7em; margin-top: 0;">
+				<section data-background-image="images/bgplain.png">
+					<h4>CircleCI config.yml - Update Testing</h4>
+					<pre><code data-trim data-noescape>
+- run:
+	name: run tests
+	command: |
+    	. venv/bin/activate
+    	pytest --environment-id="CI_$CIRCLE_BRANCH"
+					</code></pre>
 				</section>
+
+
+
+				<section data-background-image="images/bg2.png">
+					<h2>Let's dig into migrate.js</h2>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Utilize the Contentful CMA</h4>
+					<pre><code data-trim data-noescape>
+const { createClient } = require('contentful-management');
+
+//...//
+
+const client = createClient({
+  accessToken: CMA_ACCESS_TOKEN
+});
+const space = await client.getSpace(SPACE_ID);
+					</code></pre>
+				</section>
+
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Does the environment exist?</h4>
+					<pre><code data-trim data-noescape>
+    console.log(`Checking for existing versions of environment: ${ENVIRONMENT_ID}`);
+
+    try {
+      environment = await space.getEnvironment(ENVIRONMENT_ID);
+      if (ENVIRONMENT_ID != 'master'){
+        await environment.delete();
+        console.log('Environment deleted');
+      }
+    } catch(e) {
+      console.log('Environment not found');
+    }
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Create the environment</h4>
+					<pre><code data-trim data-noescape>
+    if (ENVIRONMENT_ID != 'master'){
+      console.log(`Creating environment ${ENVIRONMENT_ID}`);
+      environment = await space.
+      	createEnvironmentWithId(ENVIRONMENT_ID,
+      		{ name: ENVIRONMENT_ID });
+    }
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Allow API Key access</h4>
+					<pre><code data-trim data-noescape>
+    console.log('Update API Keys to allow access to new environment');
+    const newEnv = {
+      sys: {
+        type: 'Link',
+        linkType: 'Environment',
+        id: ENVIRONMENT_ID
+      }
+    }
+
+    const {items: keys} = await space.getApiKeys();
+    await Promise.all(keys.map(key => {
+      console.log(`Updating - ${key.sys.id}`);
+      key.environments.push(newEnv);
+      return key.update();
+    }));
+					</code></pre>
+				</section>
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Run needed Migrations</h4>
+					<pre><code data-trim data-noescape>
+    console.log('Run migrations and update version entry');
+    while(migrationToRun = migrationsToRun.shift()) {
+      const filePath = path.join(__dirname, '..', 'migrations', getFileOfVersion(migrationToRun));
+      console.log(`Running ${filePath}`);
+      await runMigration(Object.assign(migrationOptions, {
+        filePath
+      }));
+      console.log(`${migrationToRun} succeeded`);
+
+      storedVersionEntry.fields.version[defaultLocale] = migrationToRun;
+      storedVersionEntry = await storedVersionEntry.update();
+      storedVersionEntry = await storedVersionEntry.publish();
+
+      console.log(`Updated version entry to ${migrationToRun}`);
+    }
+
+    console.log('All done!');
+    					</code></pre>
+				</section>
+
+
+				<section data-background-image="images/bgplain.png">
+					<h4>Demo</h4>
+					<video data-autoplay>
+						<source data-src="images/Full_demo.webm" type="video/webm" />
+    				 </video>
+				</section>
+
+
 
 				<section data-background-image="images/bg2.png">
 					<h3>Integrate evolving your content model into your delivery pipeline</h3>
